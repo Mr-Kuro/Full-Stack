@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "1",
+        "name": "Angular + SpringBoot",
+        "category": "Fullstack",
+        "duracao": "56516"
+    },
+    {
+        "_id": "2",
+        "name": "Angular",
+        "category": "FrontEnd",
+        "duracao": "25455"
+    },
+    {
+        "_id": "2",
+        "name": "SpringBoot",
+        "category": "BackEnd",
+        "duracao": "26516"
+    }
+]
