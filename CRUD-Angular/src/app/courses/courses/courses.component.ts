@@ -7,7 +7,7 @@ import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-courses',
-  templateUrl: './courses.component.html',
+  templateUrl:'./courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
@@ -17,7 +17,7 @@ export class CoursesComponent implements OnInit {
   public courses$: Observable<Course[]>;    // observable de Curse[]
 
   // array de colunas para mostrar no mat...
-  displayedColumns = ['name', 'category', 'duration'];
+  displayedColumns = ['_id', 'name', 'category', 'duration'];
 
 
   // coursesService: CoursesService;  // outra forma de inicializar fora do construtor da classe
