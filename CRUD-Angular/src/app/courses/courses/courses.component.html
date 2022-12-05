@@ -1,13 +1,11 @@
-<mat-card>
-
-
+<mat-card id="firstMatCard">
   <!-- Tollbar -->
-  <mat-toolbar>Cursos Disponíveis</mat-toolbar>
+  <mat-toolbar color="secondary">Cursos Disponíveis</mat-toolbar>
 
   <div *ngIf="courses$ | async as courses; else loading">
     <table color="secondary" mat-table [dataSource]="courses" class="mat-elevation-z8">
-
-      <!-- Name Column -->
+<!-- 
+      <!- id Column ->
       <ng-container matColumnDef="_id">
         <th mat-header-cell *matHeaderCellDef> _ID 
           <mat-icon aria-hidden="false" aria-label="badge icon" fontIcon="">fingerprint</mat-icon>
@@ -18,7 +16,7 @@
             </mat-icon>
           {{ course._id }}
         </td>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
@@ -46,7 +44,25 @@
         </td>
       </ng-container>
 
-      <!-- Categoria duration -->
+      <!-- actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-mini-fab color="accent" aria-label="add more 1 course">
+            <mat-icon (click)="onAdd()">add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let course">
+          <button mat-icon-button color="primary" aria-label="edit course">
+            <mat-icon>edit</mat-icon>
+          </button>
+  
+          <button mat-icon-button color="warn" aria-label="remove course">
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <!-- duration colum-->
       <ng-container matColumnDef="duration">
         <th mat-header-cell *matHeaderCellDef> Duraçâo 
           <mat-icon aria-hidden="false" aria-label="timer icon" fontIcon="timer"></mat-icon>

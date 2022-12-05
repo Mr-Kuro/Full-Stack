@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { Course } from '../models/course';
@@ -17,14 +18,16 @@ export class CoursesComponent implements OnInit {
   public courses$: Observable<Course[]>;    // observable de Curse[]
 
   // array de colunas para mostrar no mat...
-  displayedColumns = ['_id', 'name', 'category', 'duration'];
+  displayedColumns = [/*'_id',*/ 'name', 'category', 'duration', 'actions'];
 
 
   // coursesService: CoursesService;  // outra forma de inicializar fora do construtor da classe
 
   constructor(
     private coursesService: CoursesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
     ) {
     // this.coursesService;   // forma de inicializar fora do parâmetro do construtor da classe
     // this.coursesService = new CoursesService();   // inicializando fora do parâmetro do construtor
@@ -49,6 +52,11 @@ export class CoursesComponent implements OnInit {
       data:
         ErrorMsg
     })
+  }
+
+  onAdd(){
+    console.log('On Add')
+    this.router.navigate(['new'], {relativeTo: this.route})
   }
 
   ngOnInit(): void {
