@@ -10,8 +10,6 @@ import { CourseFormComponent } from './course-form/course-form.component';
 
 
 
-
-
 @NgModule({
   declarations: [
     CoursesComponent,
@@ -22,7 +20,7 @@ import { CourseFormComponent } from './course-form/course-form.component';
     CoursesRoutingModule,
     AppMaterialModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CoursesModule { }

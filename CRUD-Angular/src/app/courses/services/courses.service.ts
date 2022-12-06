@@ -24,8 +24,15 @@ export class CoursesService {
       // delay(1000),
       tap(list => console.log(list))
     )
-
   }
 
+  save(record: Course){
+    this.httpClient.post<Course>(this.API, record).subscribe(result => {try {
+      console.log(result)
+    } catch (error) {
+      
+    }})
+    // console.log(record)
+  }
 
 }

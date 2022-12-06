@@ -1,3 +1,21 @@
+
+div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+mat-card{
+    padding: 2%;
+    margin: 2%;
+    width: auto;
+    margin-bottom: 2em;
+}
+
+mat-toolbar{
+    margin-bottom: 2em;
+}
+
 table {
     width: 100%;
 }

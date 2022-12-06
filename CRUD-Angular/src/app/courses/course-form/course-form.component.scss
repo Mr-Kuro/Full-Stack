@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+mat-card{
+    padding: 2%;
+    margin: 2%;
+    width: 96%;
+    margin-bottom: 2em;
+}
+
+mat-toolbar{
+    margin-bottom: 2em;
+}
+
+mat-form-field{
+    width: 70%;
+}
+
+mat-card-content{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    background-color: #212121;
+    border-radius: 5%;
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 3em;
+}
+
+mat-card-actions > button{
+    margin: auto;
+    border-radius: 10%;
+    padding: 2%;
+    
+}
+
+mat-card-actions:first-of-type(2){
+    background-color: #706d8b;
+    
+}
+
+mat-icon{
+    color: #fff;
+}
+
+input:hover{
+    color: rgb(177, 38, 38);
+}
+
+input::placeholder{
+    color:rgb(162, 160, 174) !important;
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 100%;
+    margin: auto;
+}

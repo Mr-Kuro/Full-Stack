@@ -3,8 +3,8 @@
 @import '@angular/material/theming';
 @include mat-core();
 
-$custom-app-primary: mat-palette($mat-blue_gray, 800);
-$custom-app-secondary: mat-palette($mat-gray, 800);
+$custom-app-primary: mat-palette($mat-gray, 900, 700);
+$custom-app-secondary: mat-palette($mat-blue_gray, 700, 500, 900);
 $custom-app-warn: mat-palette($mat-red);
 
 $custom-theme: mat-dark-theme($custom-app-primary, $custom-app-secondary, $custom-app-warn);
