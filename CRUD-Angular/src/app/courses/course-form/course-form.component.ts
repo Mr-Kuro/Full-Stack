@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { CoursesService } from '../services/courses.service';
 
 @Component({
@@ -15,22 +16,31 @@ export class CourseFormComponent implements OnInit {
   constructor(
     private formBiulder: FormBuilder,
     private courseService: CoursesService,
-    ) {
-    this.form = formBiulder.group({
+    private dialog: MatDialog
+  ) {
+    this.form = this.formBiulder.group({
       name: [null],
       category: [null]
     })
   }
 
-  onSubmit() { 
-    this.courseService.save(this.form.value)
+  onSubmit() {
+    let resultado = this.courseService.save(this.form.value);
+    if(typeof resultado === 'undefined') this.onError("Erro ao Salvar Cursos! verifique a conexão com a internet ou contate o support.")
+    // console.log(typeof(resultado))
     // console.log(this.form.value)
-
   }
 
-  onCancel() { }
-
-  ngOnInit(): void {
+  
+  onError(MsgError: String){
+    this.dialog.open(ErrorDialogComponent, {
+      data: MsgError
+    })
+    // console.log(MsgError)
   }
+
+  onCancel() { };
+
+  ngOnInit(): void { };
 
 }
