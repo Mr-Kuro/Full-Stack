@@ -8,8 +8,14 @@
         <form [formGroup]="form">
             <mat-form-field appearance="fill">
                 <mat-label>Digite o nome do curso</mat-label>
-                <input type="text" formControlName="name" matInput placeholder="Ex: Desenvolvedor Web">
+                <input type="text" formControlName="name" matInput placeholder="Ex: Angular" minlength="5" maxlength="200" required >
                 <mat-icon matSuffix>badge</mat-icon>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Digite a duração do curso em minutos</mat-label>
+                <input  type="number" formControlName="duration" matInput placeholder="Ex: 115" minlength="5" maxlength="10" required >
+                <mat-icon matSuffix>timer</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -24,8 +30,8 @@
             </mat-form-field>
 
             <mat-card-actions>
-                <button (click)="onSubmit()" mat-raised-button color="primary">Salvar
-                    <mat-icon style="color: black;" matSuffix>save</mat-icon>
+                <button type="submit" (click)="onSubmit()" color="secondary" mat-raised-button color="primary">
+                    Salvar <mat-icon style="color: black;" matSuffix>save</mat-icon>
                 </button>
                 <button (click)="onCancel()" mat-raised-button color="warn">Cancelar
                     <mat-icon style="color: black;" matSuffix>cancel</mat-icon>

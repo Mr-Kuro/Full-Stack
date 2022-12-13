@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { Course } from '../models/course';
 import { CoursesService } from '../services/courses.service';
 
 @Component({
@@ -11,30 +12,45 @@ import { CoursesService } from '../services/courses.service';
 })
 export class CourseFormComponent implements OnInit {
 
-  form: FormGroup
+  public form: FormGroup;
 
   constructor(
     private formBiulder: FormBuilder,
-    private courseService: CoursesService,
+    private service: CoursesService,
     private dialog: MatDialog
   ) {
     this.form = this.formBiulder.group({
       name: [null],
-      category: [null]
+      category: [null],
+      duration: [null]
     })
   }
 
   onSubmit() {
-    let resultado = this.courseService.save(this.form.value);
-    if(typeof resultado === 'undefined') this.onError("Erro ao Salvar Cursos! verifique a conexão com a internet ou contate o support.")
-    // console.log(typeof(resultado))
-    // console.log(this.form.value)
+    this.service.save(this.form.value).subscribe(
+      {
+      next(result):Course {
+        console.log(result);
+        return result
+        this.complete
+      },
+      error(msg) {
+        console.log('Error Getting Course: ', msg);
+        this.error;
+      },
+      complete() {
+        this.dialog.open(ErrorDialogComponent, {
+          data: "Erro ao salvar Curso! Contate o Support."
+        })
+      },
+    }
+      )
   }
 
-  
-  onError(MsgError: String){
+
+  onError(MsgError: String) {
     this.dialog.open(ErrorDialogComponent, {
-      data: MsgError
+      data: "Erro ao salvar Curso! Contate o Support."
     })
     // console.log(MsgError)
   }

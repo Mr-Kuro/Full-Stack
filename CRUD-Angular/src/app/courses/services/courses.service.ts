@@ -30,19 +30,13 @@ export class CoursesService {
     )
   }
 
-  save(record: Course) {
-    let resultado;
-    this.httpClient.post<Course>(this.API, record).subscribe(
-      result => resultado = result,
-      error =>  {resultado = error; console.log(error)}
-      )
-
-      // console.log(resultado)
-      return resultado
-
-    // console.log(record)
+  save(record: Course){
+    return this.httpClient.post<Course>(this.API, record);
+     ;
+/*
+    console.log(resultado)
+    console.log(record)
+    */
   }
-
-
 
 }

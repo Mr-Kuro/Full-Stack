@@ -49,11 +49,12 @@ mat-icon{
 }
 
 input:valid, mat-select:valid {
-    background-color: rgba(13, 253, 0, 0.053);
+    background-color: rgba(15, 151, 8, 0.208);
+    color: rgba(15, 151, 8, 0.208);
 }
 
-input:invalid, mat-select:valid{
-    background-color: rgba(255, 0, 0, 0.27);
+input:invalid, mat-select:invalid{
+    color: rgba(255, 0, 0, 0.27);
 }
 
 input::placeholder{
