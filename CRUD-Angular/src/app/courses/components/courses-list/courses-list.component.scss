@@ -1,0 +1,27 @@
+mat-table{
+    overflow: auto;
+    max-height: 600px;
+}
+
+.action-colum{
+    display: contents;
+    flex: 75px;
+}
+
+.action-colum-header{
+    display: contents;
+    flex: 0 0 55 !important;
+}
+
+.mat-icon-button{
+    margin-top: 1em;
+    border: 1.5%;
+    border-style: dotted;
+    border-color: rgb(102, 102, 102);
+    background-color: #424242;
+    margin-left: 5%;
+}
+
+mat-icon{
+    color: #fff;
+}

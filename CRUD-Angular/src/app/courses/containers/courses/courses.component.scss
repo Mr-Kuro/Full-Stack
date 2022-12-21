@@ -1,0 +1,50 @@
+
+.load_spinner{
+    background-color: #424242;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+mat-card{
+    max-width: 80%;
+    margin: 2em auto;
+    padding: 2em;
+    text-align: center;
+    min-width: 700px ;
+
+}
+
+.colum-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+// #firstMatCard{
+//     margin: 1%;
+//     padding: 1%;
+//     width: auto;
+// }
+
+// .min-whidth{
+//     min-width: 200px;
+// }
+
+// mat-card{
+//     padding: 2%;
+//     margin: 2%;
+//     width: auto;
+//     margin-bottom: 2em;
+// }
+
+// mat-toolbar{
+//     margin-bottom: 2em;
+//     width: auto;
+// }
+
+// ng-container{
+//     width: 100%;
+//     margin: auto;
+// }

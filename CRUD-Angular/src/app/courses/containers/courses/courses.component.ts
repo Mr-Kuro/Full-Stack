@@ -3,12 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { Course } from '../models/course';
-import { CoursesService } from '../services/courses.service';
+import { Course } from '../../interfaces/course';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-courses',
-  templateUrl:'./courses.component.html',
+  templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
@@ -17,9 +17,10 @@ export class CoursesComponent implements OnInit {
   // public coursees: Course[] = [];    // teste* apenas Curse[]
   public courses$: Observable<Course[]>;    // observable de Curse[]
 
-  // array de colunas para mostrar no mat...
-  displayedColumns = [/*'_id',*/ 'name', 'category', 'duration', 'actions'];
-
+  /*
+    // array de colunas para mostrar no mat...
+    public displayedColumns = [/*'_id',/ 'name', 'category', 'duration', 'actions'];
+  */
 
   // coursesService: CoursesService;  // outra forma de inicializar fora do construtor da classe
 
@@ -28,7 +29,7 @@ export class CoursesComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute
-    ) {
+  ) {
     // this.coursesService;   // forma de inicializar fora do parâmetro do construtor da classe
     // this.coursesService = new CoursesService();   // inicializando fora do parâmetro do construtor
 
@@ -39,12 +40,6 @@ export class CoursesComponent implements OnInit {
         return of([]);
       })
     );
-    /* testes* com coursees: Course[]
-      this.courses.subscribe(course => this.coursees = course as [])
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>'); 
-      console.log(this.coursees);
-      console.log("<<<<<<<<<<<<<<<<<<<<<<<<<")
-    */
   }
 
   onError(ErrorMsg: string) {
@@ -54,18 +49,11 @@ export class CoursesComponent implements OnInit {
     })
   }
 
-  onAdd(){
+  onAdd() {
     console.log('On Add')
-    this.router.navigate(['new'], {relativeTo: this.route})
+    this.router.navigate(['new'], { relativeTo: this.route })
   }
 
-  ngOnInit(): void {
-    /* testes com courses: Observable<Course[]> e coursees: Course[]
-      this.courses.subscribe(courses => this.coursees = courses)
-      console.log('this.coursees');
-      console.log(this.coursees);
-      console.log('this.coursees');
-    */
-  }
+  ngOnInit(): void { }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mr_kuro.crud_api.model.Course;
@@ -36,9 +37,10 @@ public class CurseController {
 
     // @RequestMapping(method = RequestMethod.POST)  // pegando envios do frontend
     @PostMapping
+    // @ResponseStatus(code = HttpStatus.CREATED) // enviando resposta 201 ao servidor
     public ResponseEntity<Course> Creat(@RequestBody Course course){
         // System.out.println(course.getName()); // testando se a resposta está correta
-        // return this.courseRepository.save(course);
+        // return this.courseRepository.save(course); // usar com "@ResponseStatus"
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.courseRepository.save(course));
 

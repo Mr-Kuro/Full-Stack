@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { delay, Observable, tap } from 'rxjs';
 
-import { Course } from '../models/course';
+import { Course } from '../interfaces/course';
 
 
 @Injectable({
@@ -25,12 +25,12 @@ export class CoursesService {
 
     // return of (list);
     return this.httpClient.get<Course[]>(this.API).pipe(
-      // delay(1000),
+      delay(1000),
       tap(list => console.log(list))
     )
   }
 
-  save(record: Course){
+  save(record:  Partial<Course>){
     return this.httpClient.post<Course>(this.API, record);
      ;
 /*

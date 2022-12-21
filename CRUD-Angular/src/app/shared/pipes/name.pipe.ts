@@ -11,6 +11,7 @@ export class NamePipe implements PipeTransform {
       case 'Angular': return 'code';
       case 'Spring': return 'data_object';
       case 'Angular + Spring': return 'developer_mode';
+      case 'Massoterapia': return 'volunteer_activism';
 
       default: { return '' };
 

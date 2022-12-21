@@ -1,26 +1,28 @@
-<mat-card>
-    <mat-toolbar>
+<mat-card class="min-whidth">
+    <mat-toolbar class="min-whidth">
         <mat-toolbar-row>
-            <span>Custom Toolbar</span>
+            <h1>Adicionar Curso</h1>
         </mat-toolbar-row>
     </mat-toolbar>
     <mat-card-content>
         <form [formGroup]="form">
             <mat-form-field appearance="fill">
-                <mat-label>Digite o nome do curso</mat-label>
-                <input type="text" formControlName="name" matInput placeholder="Ex: Angular" minlength="5" maxlength="200" required >
+                <mat-label>Nome do curso</mat-label>
+                <input type="text" formControlName="name" matInput placeholder="Ex: Angular" minlength="5"
+                    maxlength="200" required>
                 <mat-icon matSuffix>badge</mat-icon>
             </mat-form-field>
-            
+
             <mat-form-field appearance="fill">
-                <mat-label>Digite a duração do curso em minutos</mat-label>
-                <input  type="number" formControlName="duration" matInput placeholder="Ex: 115" minlength="5" maxlength="10" required >
+                <mat-label>Duração em minutos</mat-label>
+                <input type="number" formControlName="duration" matInput placeholder="Ex: 115" minlength="5"
+                    maxlength="10" required>
                 <mat-icon matSuffix>timer</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label  >escolha a categoria do curso</mat-label>
-                <mat-select formControlName="category">
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="category" required>
                     <mat-option value="">Nothing</mat-option>
                     <mat-option value="FullStack">FullStack</mat-option>
                     <mat-option value="FronEnd">FronEnd</mat-option>
@@ -30,7 +32,7 @@
             </mat-form-field>
 
             <mat-card-actions>
-                <button type="submit" (click)="onSubmit()" color="secondary" mat-raised-button color="primary">
+                <button type="submit" (click)="onSubmit()" color="secondary" mat-raised-button color="secondary">
                     Salvar <mat-icon style="color: black;" matSuffix>save</mat-icon>
                 </button>
                 <button (click)="onCancel()" mat-raised-button color="warn">Cancelar

@@ -1,0 +1,115 @@
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+mat-card {
+    display: block;
+    padding: 2%;
+    margin: 2%;
+    width: 96%;
+    margin-bottom: 2em;
+}
+
+mat-toolbar {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    padding-bottom: 1.5em;
+    border-bottom-right-radius: 90%;
+    border-bottom-left-radius: 90%;
+}
+mat-toolbar h1{
+    margin: auto !important;
+    width: 100% !important;
+}
+
+mat-form-field {
+    width: 100%;
+    margin: auto;
+
+}
+
+mat-card-content {
+    background-color: #212121;
+    border-end-start-radius: 25%;
+    border-end-end-radius: 25%;
+    // display: flex;   
+    // align-self: center;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 3em;
+    margin: auto;
+}
+
+
+mat-card-actions>button {
+    width: auto;
+    margin: auto;
+    border-radius: 10%;
+    padding: 1%;
+
+}
+
+mat-card-actions:first-of-type(2) {
+    background-color: #706d8b;
+
+}
+
+mat-icon {
+    color: #fff;
+}
+
+
+input:valid,
+mat-select:valid {
+    background-color: rgba(15, 151, 8, 0.116);
+    color: rgba(15, 151, 8, 0.208);
+}
+
+input:invalid,
+mat-select:invalid {
+    color: rgba(255, 0, 0, 0.27);
+}
+
+input::placeholder {
+    color: rgb(162, 160, 174) !important;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+.snackbar {
+    background: black !important;
+    color: #212121 !important;
+    border: none !important;
+}
+
+.min-whidth {
+    min-width: 200px;
+}
+
+
+@media screen and (max-width: 450px){
+    mat-card-content {
+        position: relative;
+        background-color: #212121;
+        border-end-start-radius: 25%;
+        border-end-end-radius: 25%;
+        // display: flex;   
+        // align-self: center;
+        flex-wrap: wrap;
+        width: 70%;
+        padding: 3em;
+        margin: auto;
+    }
+}

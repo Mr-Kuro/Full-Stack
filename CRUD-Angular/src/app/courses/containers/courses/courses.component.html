@@ -1,0 +1,22 @@
+<mat-card id="firstMatCard" class="min-whidth">
+  <!-- Tollbar -->
+
+  <div class="colum-flex mat-elevation-z8">
+  <mat-toolbar color="secondary" class="min-whidth">Cursos Disponíveis</mat-toolbar>
+
+    <app-courses-list
+    *ngIf="courses$ | async as courses; else loading"
+    [courses]="courses"
+    (add)="onAdd()"
+    ></app-courses-list>
+
+    <ng-template #loading>
+      <div class="load_spinner">
+        <mat-spinner color="primary"></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+
+
+
+</mat-card>
