@@ -64,7 +64,7 @@
         </th>
         <td mat-cell *matCellDef="let course" class="action-colum">
             <button class="mat-icon-button" mat-icon-button color="primary" aria-label="edit course">
-                <mat-icon>edit</mat-icon>
+                <mat-icon (click)="onEdit(course)">edit</mat-icon>
             </button>
 
             <button class="mat-icon-button" mat-icon-button color="warn" aria-label="remove course">
