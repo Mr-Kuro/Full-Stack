@@ -25,22 +25,37 @@ export class CoursesService {
 
     // return of (list);
     return this.httpClient.get<Course[]>(this.API).pipe(
-      delay(1000),
+      // delay(1000),
       tap(list => console.log(list))
     )
   }
 
-  loadById(id: string){
-    return this.httpClient.get<Course>(this.API + '/' + id);
+  loadById(_id: string) {
+    return this.httpClient.get<Course>(`${this.API}/${_id}`);
   }
 
-  save(record:  Partial<Course>){
+  save(record: Partial<Course>) {
+    if(record._id){
+      console.log("updater", record);
+      return this.update(record)
+    }
+    console.log("creater", record);
+    return this.create(record)
+  }
+
+  private create(record: Partial<Course>){
     return this.httpClient.post<Course>(this.API, record);
-     ;
-/*
-    console.log(resultado)
-    console.log(record)
-    */
+
+  }
+
+  private update(record: Partial<Course>){
+    return this.httpClient.put<Course>(`${this.API}/${record._id}`, record);
+
+  }
+
+  public delete(_id: string){
+    return this.httpClient.delete(`${this.API}/${_id}`);
+
   }
 
 }
