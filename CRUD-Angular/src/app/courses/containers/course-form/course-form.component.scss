@@ -36,7 +36,7 @@ mat-card-content {
     background-color: #212121;
     border-end-start-radius: 25%;
     border-end-end-radius: 25%;
-    // display: flex;   
+    // display: flex;
     // align-self: center;
     flex-wrap: wrap;
     width: 80%;
@@ -63,20 +63,20 @@ mat-icon {
 }
 
 
-input:valid,
-mat-select:valid {
-    background-color: rgba(15, 151, 8, 0.116);
-    color: rgba(15, 151, 8, 0.208);
-}
+// input:valid,
+// mat-select:valid {
+//     background-color: rgba(15, 151, 8, 0.116);
+//     color: rgba(15, 151, 8, 0.208);
+// }
 
-input:invalid,
-mat-select:invalid {
-    color: rgba(255, 0, 0, 0.27);
-}
+// input:invalid,
+// mat-select:invalid {
+//     color: rgba(255, 0, 0, 0.27);
+// }
 
-input::placeholder {
-    color: rgb(162, 160, 174) !important;
-}
+// input::placeholder {
+//     color: rgb(162, 160, 174) !important;
+// }
 
 
 form {
@@ -105,7 +105,7 @@ form {
         background-color: #212121;
         border-end-start-radius: 25%;
         border-end-end-radius: 25%;
-        // display: flex;   
+        // display: flex;
         // align-self: center;
         flex-wrap: wrap;
         width: 70%;

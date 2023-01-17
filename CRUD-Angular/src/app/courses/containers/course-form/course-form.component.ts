@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -15,11 +15,30 @@ import { CoursesService } from '../../services/courses.service';
 })
 export class CourseFormComponent implements OnInit {
 
-  public form = this.formBiulder.group<Course>({
-    _id: '',
-    name: '',
-    category: '',
+  public courseForm = this.formBiulder.group<Course>({
+    _id: ''
+    // ['']
+    ,
+    name: ''
+    // ['',
+    //   Validators.required,
+    //   Validators.maxLength(200),
+    //   Validators.minLength(3)
+    // ]
+    ,
+    category: ''
+    // ['',
+    //   Validators.required,
+    //   Validators.maxLength(10),
+    //   Validators.minLength(3)
+    // ]
+    ,
     duration: ''
+    // ['',
+    //   Validators.required,
+    //   Validators.maxLength(100),
+    // ]
+    ,
   });
 
   constructor(
@@ -33,7 +52,7 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.save(this.form.value).subscribe(
+    this.service.save(this.courseForm.value).subscribe(
       result => { console.log(result); this.onSave() },
       error => { console.error(error); this.onError() }
     );
@@ -45,10 +64,11 @@ export class CourseFormComponent implements OnInit {
     console.log("cancel")
   };
 
-  onSave( ) {
-    this._snackBar.open("Sucesso ao salvar curso", "close",{
-      duration:5000,
+  onSave() {
+    this._snackBar.open("Sucesso ao salvar curso", "close", {
+      duration: 5000,
       panelClass: "snackbar",
+      announcementMessage: "gay"
 
     });
     this.onCancel();
@@ -62,19 +82,39 @@ export class CourseFormComponent implements OnInit {
     // console.log("MsgError")
   }
 
+  getErrorMessage(fieldName: string) {
+    const field = this.courseForm.get(fieldName)
+
+    if (field?.hasError('required')) {
+      return 'Campo obrigatório';
+    };
+
+    if (field?.hasError('minlength')) {
+      const requiredLength: number = field.errors ? field.errors['minlength']['requiredlength'] : 3;
+      return `tamanho mínimo do campo é ${requiredLength} caracteres`;
+    };
+
+    if (field?.hasError('maxlength')) {
+      const requiredLength: number = field.errors ? field.errors['maxlength']['requiredlength'] : 200;
+      return `tamanho máximo de ${requiredLength} caracteres foi excedido`;
+    };
+
+    return 'Campo iválido!';
+  }
+
 
   ngOnInit(): void {
-    const course: Course = this.route.snapshot.data['course']
-    this.form.setValue(
+    const course = this.route.snapshot.data['course']
+    this.courseForm.setValue(
       {
         _id: course._id,
-        name: course.name ,
+        name: course.name,
         category: course.category,
         duration: course.duration,
       }
 
     )
-    console.log(this.form.value.duration)
+    console.log(this.courseForm.value.duration)
   };
 
 }

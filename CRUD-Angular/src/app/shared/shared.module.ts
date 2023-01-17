@@ -7,6 +7,7 @@ import { CategoryPipe } from './pipes/category.pipe';
 import { DurationPipe } from './pipes/duration.pipe';
 import { IdPipe } from './pipes/-id.pipe';
 import { NamePipe } from './pipes/name.pipe';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -16,7 +17,8 @@ import { NamePipe } from './pipes/name.pipe';
     CategoryPipe,
     DurationPipe,
     IdPipe,
-    NamePipe
+    NamePipe,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { NamePipe } from './pipes/name.pipe';
   ],
   exports: [
     ErrorDialogComponent,
+    ConfirmationDialogComponent,
     CategoryPipe,
     IdPipe,
     DurationPipe,

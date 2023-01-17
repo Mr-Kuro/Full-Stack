@@ -23,19 +23,19 @@ public class CrudApiApplication {
 		c.setCategory("FullStack");
 		c.setDuration(4555L);
 
-		Course a = new Course();
-		a.setName("Angular");
-		a.setCategory("FrontEnd");
-		a.setDuration(2555L);
+		// Course a = new Course();
+		// a.setName("Angular");
+		// a.setCategory("FrontEnd");
+		// a.setDuration(2555L);
 			
-		Course b = new Course();
-		b.setName("Spring");
-		b.setCategory("BackEnd");
-		b.setDuration(2555L);
+		// Course b = new Course();
+		// b.setName("Spring");
+		// b.setCategory("BackEnd");
+		// b.setDuration(2555L);
 
 		courseRepository.save(c);
-		courseRepository.save(a);
-		courseRepository.save(b);
+		// courseRepository.save(a);
+		// courseRepository.save(b);
 		};
 	}
 

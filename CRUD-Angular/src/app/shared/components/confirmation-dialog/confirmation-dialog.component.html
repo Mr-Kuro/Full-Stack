@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <p> {{ data }} </p>
+</div>
+<div mat-dialog-actions align="center" id="mat-dialog-actions" >
+  <button mat-raised-button (click)="onConfirm(true)" color="accent">Sim</button>
+  <button mat-stroked-button (click)="onConfirm(false)" color="warn">Não</button>
+</div>

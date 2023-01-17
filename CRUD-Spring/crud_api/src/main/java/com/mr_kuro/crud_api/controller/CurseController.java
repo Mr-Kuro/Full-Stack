@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mr_kuro.crud_api.model.Course;
 import com.mr_kuro.crud_api.repository.CourseRepository;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.executable.ValidateOnExecution;
 import lombok.AllArgsConstructor;
 
+@ValidateOnExecution // ativa as validações como @NotNull
 @RestController // componente que permite expor a api e permitir o gêrenciamento pro spring
 @RequestMapping("/api/courses") // pondto de acesso da api a partir do localhost
 @AllArgsConstructor // gera automaticamente o construtor com os argumentos dos atributos
@@ -41,7 +47,7 @@ public class CurseController {
     }
 
     @GetMapping("/{id}") // adiciona uma variável a url
-    public ResponseEntity<Course> findById(@PathVariable("id") Long identificador) {
+    public ResponseEntity<Course> findById(@PathVariable("id") long identificador) {
         // @PathVariable: diz ao spring para pegar a variavel passada na url
         return courseRepository.findById(identificador)
                 .map(record -> ResponseEntity.ok().body(record))
@@ -52,14 +58,14 @@ public class CurseController {
     @PostMapping
     // @ResponseStatus(code = HttpStatus.CREATED) // enviando resposta 201 ao
     // servidor
-    public ResponseEntity<Course> creat(@RequestBody Course course) {
+    public ResponseEntity<Course> create(@RequestBody @Valid Course course) {
         // System.out.println(course.getName()); // testando se a resposta está correta
         // return this.courseRepository.save(course); // usar com "@ResponseStatus"
         return ResponseEntity.status(HttpStatus.CREATED).body(this.courseRepository.save(course));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Course> update(@PathVariable Long id, @RequestBody Course course){
+    public ResponseEntity<Course> update(@PathVariable @NotNull @Positive Long id, @RequestBody Course course){
 
         return courseRepository.findById(id).map(recordFounded -> {
             recordFounded.setName(course.getName());
@@ -73,7 +79,7 @@ public class CurseController {
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Course> delete(@PathVariable Long id){
+    public ResponseEntity<Course> delete(@PathVariable @NotNull @Positive Long id){
         return courseRepository.findById(id).map(recordFounded -> {
             Course deletedCourse = recordFounded;
             this.courseRepository.deleteById(recordFounded.getId());

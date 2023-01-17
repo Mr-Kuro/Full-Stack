@@ -1,3 +1,4 @@
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -62,19 +63,30 @@ export class CoursesComponent implements OnInit {
   }
 
   onDelete(course: Course) {
-    if (course._id) {
-      this.coursesService.delete(course._id).subscribe(
-        () => {
-          this._snackBar.open("Sucesso ao Deletar curso", "close", {
-            duration: 5000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center'
-          });
-        },
-        () => this.onError("Erro ao deletar Curso!"))
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'tem certeza que deseja excluir o curso?',
+    });
 
-      this.reFresh();
-    };
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (course._id) {
+          this.coursesService.delete(course._id).subscribe(
+            () => {
+              this._snackBar.open("Sucesso ao Deletar curso", "close", {
+                panelClass: "accent",
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center'
+              });
+            },
+            () => this.onError("Erro ao deletar Curso!"))
+
+          this.reFresh();
+        };
+      }
+    });
+
+
 
   }
 

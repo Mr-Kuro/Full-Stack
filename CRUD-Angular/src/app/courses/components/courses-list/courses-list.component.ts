@@ -31,5 +31,4 @@ export class CoursesListComponent {
     this.delete.emit(course)
   }
 
-
 }

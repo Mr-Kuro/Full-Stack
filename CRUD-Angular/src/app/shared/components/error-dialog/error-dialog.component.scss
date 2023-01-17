@@ -1,8 +1,20 @@
-h1{
+h1 {
   color: #BD2A2E !important;
+  padding: 3%;
+  margin: auto;
+  text-align: center;
+  align-items: center;
 }
-#icon{
-  align-self: center;
-width: 200px;
-color: #a55255;
+
+#icon {
+  color: #a55255;
+}
+
+button{
+  background-color: #ffffff; color: #37474F;
+}
+
+body
+{
+  background: linear-gradient(#242f34, #212121,);
 }
