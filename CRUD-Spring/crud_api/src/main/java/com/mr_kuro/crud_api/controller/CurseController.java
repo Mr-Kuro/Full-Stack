@@ -34,14 +34,14 @@ public class CurseController {
     private final CourseRepository courseRepository;
 
     /**
-     * constructor feito a mão:
-     * code: public CurseController(CourseRepository courseRepository) {
+     * @constructor: feito a mão:
+     * @code: public CurseController(CourseRepository courseRepository) {
      * this.courseRepository = courseRepository;
      * }
      **/
 
     // @RequestMapping(method = RequestMethod.GET) pegando envios do bd
-    @GetMapping
+    @GetMapping("/")
     public List<Course> List() {
         return courseRepository.findAll();
     }
@@ -78,7 +78,7 @@ public class CurseController {
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Course> delete(@PathVariable @NotNull @Positive Long id){
         return courseRepository.findById(id).map(recordFounded -> {
             Course deletedCourse = recordFounded;

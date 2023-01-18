@@ -22,7 +22,7 @@ import lombok.Data;
 // @Setter
 @Data // gera getters, setters, equalls hashcodes e tostrings
 @Entity // classifica a classe como uma entidadae de um banco de dados
-@Table(name = "Course") // configurações referente a tabela que será criada no BD
+@Table(name = "Courses") // configurações referente a tabela que será criada no BD
 
 //configurando o sql delete para um update de Course.Status
 @SQLDelete(sql = "UPDATE Course SET Status = 'Inativo' WHERE id= ?") 
@@ -44,7 +44,7 @@ public class Course {
     @NotNull
     @NotBlank
     @Length(max = 10)
-    @Pattern(regexp = "BakckEnd|FrontEnd|FullStack")
+    @Pattern(regexp = "BackEnd|FrontEnd|FullStack")
     @Column(name = "Category", length = 10, nullable = false) // configurações referente a coluna no BD
     private String Category;
 
@@ -58,5 +58,6 @@ public class Course {
     @Pattern(regexp = "Ativo|Inativo")
     @Column(name = "Status", length = 10, nullable = false) // configurações referente a coluna no BD
     private String Status = "Ativo";
+
 
 }
